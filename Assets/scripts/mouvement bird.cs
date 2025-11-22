@@ -7,6 +7,7 @@ public class mouvementbird : MonoBehaviour
     float y;
     [SerializeField] GameObject explosion_obj;
     [SerializeField]UnityEvent effet_saut;
+    [SerializeField] GameObject canva_game_over;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,13 +34,20 @@ public class mouvementbird : MonoBehaviour
     {
         while (true) 
         {
-            y = gameObject.transform.position.y;
-            
-            
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, y -= 0.1f, gameObject.transform.position.z);
-            yield return new WaitForSeconds(0.1f);
-           
-           
+            if(!canva_game_over.activeSelf && GameObject.FindWithTag("bird").GetComponent<mortbird>().mort_b == false)
+            {
+                y = gameObject.transform.position.y;
+
+
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, y -= 0.1f, gameObject.transform.position.z);
+                yield return new WaitForSeconds(0.1f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+
+
 
         }
 

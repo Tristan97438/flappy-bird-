@@ -4,18 +4,20 @@ using UnityEngine.Events;
 
 public class mortbird : MonoBehaviour
 {
-    [SerializeField] AudioSource monde;
+    [SerializeField] AudioSource monde , mort_son;
     private Transform rectTransform;
     private Vector3 taille_normale;
     private Vector3 changement_scale;
     public float grossisement = 2f;
     public float duree_zoom = 0.5f;
     [SerializeField] UnityEvent mort_bird;
-    [SerializeField] GameObject canva;
+    [SerializeField] GameObject canva , score;
+    [SerializeField] TMPro.TextMeshProUGUI score_mort;
     public bool mort_b;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         mort_b = false;
         rectTransform = GetComponent<Transform>();
         taille_normale = rectTransform.localScale;
@@ -36,6 +38,7 @@ public class mortbird : MonoBehaviour
         monde.Play();
         canva.SetActive(false);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
+        score.GetComponent<score>().score_joueur = 0;
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -45,8 +48,11 @@ public class mortbird : MonoBehaviour
     }
     IEnumerator mort()
     {
+        score_mort.text = "Score : " + score.GetComponent<score>().score_joueur;
         monde.Stop();
+        mort_son.Play();
         mort_b = true;
+        detruire_murs();
         mort_bird.Invoke();
         while(transform.localScale.x < 1.5f)
         {
@@ -58,5 +64,18 @@ public class mortbird : MonoBehaviour
         canva.SetActive(true);
         transform.localScale = taille_normale;
         mort_b = false;
+    }
+    private void detruire_murs()
+    {
+       
+        GameObject[] murs = GameObject.FindGameObjectsWithTag("mur");
+
+        
+        foreach (GameObject mur in murs)
+        {
+            
+            Destroy(mur);
+        }
+
     }
 }
