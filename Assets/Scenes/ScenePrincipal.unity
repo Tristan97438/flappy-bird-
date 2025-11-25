@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 330072026096399868, guid: c612ff6b6633e3e4881d5675668d8d5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0000000031494345
       objectReference: {fileID: 0}
     - target: {fileID: 330072026096399868, guid: c612ff6b6633e3e4881d5675668d8d5a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -932,6 +932,18 @@ MonoBehaviour:
       - m_Target: {fileID: 519420033}
         m_TargetAssemblyTypeName: CameraShake, Assembly-CSharp
         m_MethodName: start_shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 369230985}
+        m_TargetAssemblyTypeName: mouvementbird, Assembly-CSharp
+        m_MethodName: lancer_effet_saut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1140,7 +1152,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 979643b6bc0484743a8b7341d1961dd0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -24,8 +24,10 @@ public class mouvementbird : MonoBehaviour
         {
             effet_saut.Invoke();
             y += 1f;
+            
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, y, gameObject.transform.position.z);
             StartCoroutine(explosion());
+            
         }
 
 
@@ -59,5 +61,16 @@ public class mouvementbird : MonoBehaviour
         explosion_obj.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         explosion_obj.SetActive(false);
+    }
+    public void lancer_effet_saut()
+    {
+        StartCoroutine(effet_saut_bird());
+    }
+
+    IEnumerator effet_saut_bird()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 20);
+        yield return new WaitForSeconds(0.50f);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
