@@ -42,9 +42,10 @@ public class spawnmur : MonoBehaviour
             }
             else
             {
+                temp_entre_mur = 2f;
                 yield return new WaitForSeconds(0.1f);
             }
-            if(GetComponent<score>().score_joueur%5 == 0)
+            if(GetComponent<score>().score_joueur%5 == 0 && temp_entre_mur>0.5f)
             {
                 temp_entre_mur -= 0.1f;
             }
