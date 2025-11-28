@@ -40,7 +40,7 @@ public class mortbird : MonoBehaviour
         cam.transform.position = pos_cam;
         monde.Play();
         canva.SetActive(false);
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(0, 0, 0);
         score.GetComponent<score>().score_joueur = 0;
     }
     public void exit()
